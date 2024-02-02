@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/checkHooks/useCheckout";
 import { useDeleteBooking } from "./bookingHooks/useDeleteBooking";
+import Empty from "../../ui/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ function BookingDetail() {
   };
 
   if (isLoading) return <Spinner />;
+  if (!booking) return <Empty resourceName="booking" />;
 
   const { status, id: bookingId } = booking;
 
